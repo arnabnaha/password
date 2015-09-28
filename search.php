@@ -85,7 +85,7 @@ echo "<td>".$row['notes']."</td>";
 
 echo "<td>".$row['date']."</td>";
 
-echo "<td>"."<a href=\"modify3.php?id=" . $row['id'] . "\">Modify Data</a></td>";
+echo "<td>"."<a href=\"modify.php?id=" . $row['id'] . "\">Modify Data</a></td>";
 
 echo "<span> </span>";
 
