@@ -16,7 +16,7 @@ header {
 <h1>DATABASE TABLE CREATION</h1>
 </header>
 <?php
-$con = mysql_connect("localhost","root","Your password");
+$con = mysql_connect("localhost","root","summerof69");
 if (!$con) {
 die ("Cannot Connect to the server: " . mysql_error());
 }
@@ -29,8 +29,9 @@ web_name VARCHAR(255) NOT NULL,
 web_link VARCHAR(255) NOT NULL,
 user_name VARCHAR(255) NOT NULL,
 pass_word VARCHAR(255) NOT NULL,
-active BIT(1) NULL,
-req_addr BIT(1) NULL,
+active VARCHAR(255) NOT NULL,
+req_addr VARCHAR(255) NOT NULL,
+mob_app VARCHAR(255) NOT NULL,
 notes VARCHAR(255) NULL,
 date timestamp,
 PRIMARY KEY(id)
@@ -59,6 +60,11 @@ echo "<h3>Table USER Not created</h3>";
 mysql_close($con);
 
 ?>
+<p>Thank you! You have completed the installation</p>
+<br>
+<p><B>Kindly click on the button below for creating a user</B></p>
+<br>
+<button type="button" onclick="window.location.href='/password/register.php'">Create User<a></button>
 </center>
 </body>
 </html>

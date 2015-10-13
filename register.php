@@ -2,6 +2,9 @@
 <html>
 <head>
 <title>Register</title>
+<link rel="icon" 
+      type="image/png" 
+      href="images/favicon.png">
 <style>
 header {
 
@@ -16,7 +19,7 @@ header {
 <header>
 <h1>REGISTER FOR ACCOUNT AND PASSWORD INFORMATION WEBSITE</h1>
 </header>
-<p><a href="index.php">Login</a></p>
+<p><a href="login.php">Login</a></p>
 <h3>Registration Form</h3>
 <table width="400">
 <form action="register.php" method="POST">
@@ -33,7 +36,7 @@ if(!empty($_POST['user']) && !empty($_POST['pass'])) {
 	$user=mysql_real_escape_string($_POST['user']);
 	$pass=mysql_real_escape_string($_POST['pass']);
 
-	$con=mysql_connect('localhost','root','Your Password') or die(mysql_error());
+	$con=mysql_connect('localhost','root','summerof69') or die(mysql_error());
 	mysql_select_db('pwdinfo') or die("cannot select DB");
 
 	$query=mysql_query("SELECT * FROM user WHERE username='".$user."'");
@@ -49,7 +52,7 @@ if(!empty($_POST['user']) && !empty($_POST['pass'])) {
 
 
 	if($result){
-	echo "Account Successfully Created. Click on Login above to Log in.";
+	echo "Account Successfully Created. Kindly click on the login link above to login.";
 	} else {
 	echo "Failure!";
 	}

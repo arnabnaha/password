@@ -1,43 +1,36 @@
-<?php 
-session_start();
-if(!isset($_SESSION["sess_user"])){
-	header("location:index.php");
-} else {
-?>
 <html>
 <head>
-      <title>Search Form</title>
+<title>Logout</title>
 <link rel="icon" 
       type="image/png" 
       href="images/favicon.png">
-
 <style>
+body {
+
+padding: 5px 5px;
+}
 
 header {
 
      background: #efefef;
 	 padding: 20px 10px;
-	 border-radius: 6px;
-	 
-	}
+	 border-radius: 6px;	 
+}
 
-	body {
-	
-	}
 button
 {
 	display: block;
 	font-size: 1.1em;
 	font-weight: bold;
 	text-transform: uppercase;
-	padding: 5px 5px;
-	margin: 10px auto;
+	padding: 10px 15px;
+	margin: 20px auto;
 	color: #CCC;
 	background-color: #555;
 	background: -webkit-linear-gradient(#888, #555);
 	background: linear-gradient(#888, #555);
 	border: 0 none;
-	border-radius: 2px;
+	border-radius: 3px;
 	text-shadow: 0 -1px 0 #000;
 	box-shadow: 0 1px 0 #666, 0 5px 0 #444, 0 6px 6px rgba(0,0,0,0.6);
 	cursor: pointer;
@@ -77,31 +70,24 @@ button:active
 }
 </style>
 </head>
-
 <body>
 <center>
 <header>
-<h1>SEARCH WEBSITE ACCOUNT INFORMATION</h1>
-<h3>Welcome, <?=$_SESSION['sess_user'];?>! <a href="logout.php">Logout</a></h3>
+<h1>WE ARE SORRY TO SEE YOU GO</h1>
+<h2>Visit us back soon!</h2>
 </header>
-
-<!-- form to get key detail of record in database -->
-<form name="form" method="POST" action="search.php">
-<table width="400">
-<tr><td><B>Enter Website Name: </B></td><td><input type="text" name="search" required></td></tr><br><br>
-</table>
 <br>
-<input type="submit"  value="submit" />
-<input type="reset" value="Reset" />
-<button type="button" onclick="window.location.href='form.php'">ADD NEW DATA<a></button>
-</form>
-</center>
-</body>
+<img src="images/logout1.gif">
+<br>
+<button id="loginagainbuttonid" type="button" onclick="window.location.href='login.php'">Login Again<a></button>
+<input id="btnCls" type="submit" class="btn" title="Click here to close the window." value="Close Window" onclick="window.close()"
+							onmouseover="this.className='btnOnMseOvr'" onmouseout="this.className='btn'" onmousedown="this.className='btnOnMseDwn'">
+<br>
+<p><B>Close Window button only works in Internet Explorer</B></p>
 <footer>
 <p align=center>All rights reserved @ Naha Health Clinic</p>
 <p align=center>Contact: <a href="mailto: contact@nahahealthclinic.org">contact@nahahealthclinic.org</a></p>
 </footer>
+</center>
+</body>
 </html>
-<?php
-}
-?>

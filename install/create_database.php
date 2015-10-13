@@ -16,7 +16,7 @@ header {
 <h1>DATABASE CREATION</h1>
 </header>
 <?php
-$con = mysql_connect("localhost","root","your password");
+$con = mysql_connect("localhost","root","summerof69");
 if (!$con) {
 die ("Cannot Connect to the server: " . mysql_error());
 }
@@ -28,6 +28,7 @@ echo "The Database was created Successfully";
 mysql_close($con);
 
 ?>
+<button type="button" onclick="window.location.href='create_table.php'">Create Tables<a></button>
 </center>
 </body>
 </html>

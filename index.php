@@ -1,71 +1,50 @@
-<!doctype html>
 <html>
 <head>
-<title>Login</title>
+<title>Website Record Creation</title>
+<link rel="icon" 
+      type="image/png" 
+      href="images/favicon.png">
+<link href="css/style.css" type="text/css" rel="stylesheet" />
 <style>
 header {
 
      background: #efefef;
 	 padding: 20px 10px;
-	 border: 6px;
+	 border-radius: 6px; 
+}
+footer {
+
+     background: #efefef;
+	 padding: 10px 10px;
+	 border-radius: 6px;
 }
 </style>
 </head>
 <body>
 <center>
 <header>
-<h1>LOGIN TO ACCOUNT AND PASSWORD INFORMATION WEBSITE</h1>
+<h1>WEBSITE ACCOUNT RECORDS</h1>
 </header>
-
-<!--<p><a href="register.php">Register</a> | <a href="index.php">Login</a></p>-->
-<h3>Login Form</h3>
-<table width="400">
-<form action="" method="POST">
-<tr><td><B>Username: </B></td><td><input type="text" name="user"></td></tr><br />
-<tr><td><B>Password: </B></td><td><input type="password" name="pass"></td></tr><br />
-</table>
-<br>	
-<input type="submit" value="Login" name="submit" />
-</form>
-<?php
-if(isset($_POST["submit"])){
-
-if(!empty($_POST['user']) && !empty($_POST['pass'])) {
-	$user=mysql_real_escape_string($_POST['user']);
-	$pass=mysql_real_escape_string($_POST['pass']);
-
-	$encrypt_password=md5($pass);
-	
-	$con=mysql_connect('localhost','root','your password') or die(mysql_error());
-	mysql_select_db('pwdinfo') or die("cannot select DB");
-
-	$query=mysql_query("SELECT * FROM user WHERE username='".$user."' AND password='".$encrypt_password."'");
-	$numrows=mysql_num_rows($query);
-	if($numrows!=0)
-	{
-	while($row=mysql_fetch_assoc($query))
-	{
-	$dbusername=$row['username'];
-	$dbpassword=$row['password'];
-	}
-
-	if($user == $dbusername && $encrypt_password == $dbpassword)
-	{
-	session_start();
-	$_SESSION['sess_user']=$user;
-
-	/* Redirect browser */
-	header("Location: landing.php");
-	}
-	} else {
-	echo "Invalid username or password!";
-	}
-
-} else {
-	echo "All fields are required!";
-}
-}
-?>
+<br>
+<p><B>This software is created by Dr. Arnab Naha for recording his personal web accounts information and easy retrieval. Any unauthorised copying of the software or use of the software will lead to immediate penal action.</B></p>
+<br>
+<p><B>If you have not installed the software, kindly click on the button below to install and create databases.</B></p>
+<br>
+<button type="button" onclick="window.location.href='install/index.php'">Install<a></button>
+<br>
+<p>After installation, kindly delete the install folder for security reasons</p>
+<br>
+<p><B>If you have already installed the software, please click the button below to login.</B></p>
+<br>
+<button type="button" onclick="window.location.href='login.php'">Login<a></button>
+<br>
 </center>
 </body>
+<br>
+<footer>
+<center>
+<p>All rights reserved @ Naha Health Clinic</p>
+<p>Contact: <a href="mailto: contact@nahahealthclinic.org">contact@nahahealthclinic.org</a></p>
+</center>
+</footer>
 </html>

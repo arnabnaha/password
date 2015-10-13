@@ -7,7 +7,10 @@ if(!isset($_SESSION["sess_user"])){
 <html>
 <head>
 <title>Account Password Information</title>
-<link href="style.css" type="text/css" rel="stylesheet" />
+<link rel="icon" 
+      type="image/png" 
+      href="images/favicon.png">
+<link href="css/style.css" type="text/css" rel="stylesheet" />
 <style>
 header {
 
@@ -35,8 +38,8 @@ header {
 </center>
 </body>
 <footer>
-<p align=center>All rights reserved @ Your Name</p>
-<p align=center>Contact: <a href="mailto: Your_Email@domain.com"></a>Your_Email@domain.com</p>
+<p align=center>All rights reserved @ Naha Health Clinic</p>
+<p align=center>Contact: <a href="mailto: contact@nahahealthclinic.org">contact@nahahealthclinic.org</a></p>
 </footer>
 </html>
 <?php
