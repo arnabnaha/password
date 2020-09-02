@@ -81,19 +81,19 @@ button:active
 
 define('DB_NAME', 'pwdinfo');
 define('DB_USER', 'root');
-define('DB_PASSWORD', 'summerof69');
+define('DB_PASSWORD', '');
 define('DB_HOST','localhost');
 
-$link = mysql_connect(DB_HOST, DB_USER, DB_PASSWORD);
+$link = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD);
 
 if (!$link) {
-       die('Could not connect: ' . mysql_error());
+       die('Could not connect: ' . mysqli_error());
 }
 
-$db_selected = mysql_select_db(DB_NAME, $link);
+$db_selected = mysqli_select_db($link, DB_NAME);
 
 if (!$db_selected) {
-    die('can\'t use ' . DB_NAME . ': ' . mysql_error());
+    die('can\'t use ' . DB_NAME . ': ' . mysqli_error());
 }
 
 $value = $_POST['web_name'];
@@ -107,11 +107,11 @@ $value8 = $_POST['notes'];
 
 $sql = "INSERT INTO password (web_name, web_link, user_name, pass_word, active, req_addr, mob_app, notes) VALUES ('$value', '$value2', '$value3', '$value4', '$value5', '$value6', '$value7', '$value8')";
 
-if (!mysql_query($sql)) {
-    die('Error: ' . mysql_error());
+if (!mysqli_query($link, $sql)) {
+    die('Error: ' . mysqli_error());
 }else echo ('Your Submission is Successful');
 
-mysql_close($link);
+mysqli_close($link);
 
 ?>
 <button type="button" onclick="window.location.href='form.php'">ADD MORE<a></button>

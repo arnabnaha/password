@@ -99,7 +99,7 @@ button:active
 </body>
 <footer>
 <p align=center>All rights reserved @ Naha Health Clinic</p>
-<p align=center>Contact: <a href="mailto: contact@nahahealthclinic.org">contact@nahahealthclinic.org</a></p>
+<p align=center>Contact: <a href="mailto: contactus@nahahealthclinic.com">contactus@nahahealthclinic.com</a></p>
 </footer>
 </html>
 <?php

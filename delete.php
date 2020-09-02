@@ -27,23 +27,23 @@ header {
 </header>
 <?php
 
-$con = mysql_connect("localhost","root","summerof69");
+$con = mysqli_connect("localhost","root","");
 if (!$con) {
-die("can not connect: " . mysql_error());
+die("can not connect: " . mysqli_error());
 }
-mysql_select_db("pwdinfo",$con);
+mysqli_select_db($con, "pwdinfo");
 
 if( isset( $_GET['id']) )
 {
      $id = $_GET['id'];
 	 $sql= "DELETE FROM password WHERE id = '$id'";
-	 $result= mysql_query($sql) or die("Failed" . mysql_error());
+	 $result= mysqli_query($con, $sql) or die("Failed" . mysqli_error());
 }
 if($result) {
 echo 'You have deleted the record';
 }else{
 echo '<p> An error has occured</p>';
-echo mysql_error();
+echo mysqli_error();
 echo '<p>'.$query.'</p>';
 }
 }

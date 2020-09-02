@@ -20,17 +20,17 @@ header {
 </header>
 <?php
 
-$con = mysql_connect("localhost","root","summerof69");
+$con = mysqli_connect("localhost","root","");
 if (!$con) {
-die("can not connect: " . mysql_error());
+die("can not connect: " . mysqli_error());
 }
-mysql_select_db("pwdinfo",$con);
+mysqli_select_db($con, "pwdinfo");
 
 if( isset( $_GET['id']) )
 {
      $id = $_GET['id'];
-	 $sql= mysql_query("SELECT * FROM password WHERE id = '$id'");
-	 $row= mysql_fetch_array($sql);
+	 $sql= mysqli_query($con, "SELECT * FROM password WHERE id = '$id'");
+	 $row= mysqli_fetch_array($sql);
 }
 if( isset($_POST['submit']) ) {
     
@@ -46,12 +46,12 @@ if( isset($_POST['submit']) ) {
   
 $id = $_POST['id'];  
 $update = "UPDATE password SET $pw_update WHERE id = '$id'";
-$result = mysql_query($update) or die(mysql_error());
+$result = mysqli_query($con, $update) or die(mysqli_error());
 if($result) {
 echo 'You have updated the record';
 }else{
 echo '<p> An error has occured</p>';
-echo mysql_error();
+echo mysqli_error();
 echo '<p>'.$query.'</p>';
 }
 }

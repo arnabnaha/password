@@ -6,12 +6,12 @@ if(!isset($_SESSION["sess_user"])){
 ?>
 <?php 
 
-$connection = mysql_connect('localhost','root','summerof69') or die ("Couldn't connect to server.");  
-$db = mysql_select_db('pwdinfo', $connection) or die ("Couldn't select database.");  
+$connection = mysqli_connect('localhost','root','') or die ("Couldn't connect to server.");  
+$db = mysqli_select_db($connection, 'pwdinfo') or die ("Couldn't select database.");  
 
 $search=$_POST['search']; 
 $sql="SELECT * FROM password WHERE web_name LIKE '%$search%'";
-$result=mysql_query($sql); 
+$result=mysqli_query($connection, $sql); 
     
 ?> 
 
@@ -119,7 +119,7 @@ button:active
 
 <?php
 
-while($row=mysql_fetch_array($result)){
+while($row=mysqli_fetch_array($result)){
 
 echo "<tr>";
 
@@ -163,7 +163,7 @@ echo "</tr>";
 </body>
 <footer> 
 <p align=center>All rights reserved @ Naha Health Clinic</p>
-<p align=center>Contact: <a href="mailto: contact@nahahealthclinic.org">contact@nahahealthclinic.org</a></p>
+<p align=center>Contact: <a href="mailto: contactus@nahahealthclinic.com">contactus@nahahealthclinic.com</a></p>
 </footer>
 </html>
 <?php

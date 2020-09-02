@@ -93,19 +93,20 @@ button:active
 if(isset($_POST["submit"])){
 
 if(!empty($_POST['user']) && !empty($_POST['pass'])) {
-	$user=mysql_real_escape_string($_POST['user']);
-	$pass=mysql_real_escape_string($_POST['pass']);
+	
+	$con=mysqli_connect('localhost','root','') or die(mysqli_error($con));
+	mysqli_select_db($con,'pwdinfo') or die("cannot select DB");
+	
+	$user=mysqli_real_escape_string($con, $_POST['user']);
+	$pass=mysqli_real_escape_string($con, $_POST['pass']);
 
 	$encrypt_password=md5($pass);
-	
-	$con=mysql_connect('localhost','root','summerof69') or die(mysql_error());
-	mysql_select_db('pwdinfo') or die("cannot select DB");
 
-	$query=mysql_query("SELECT * FROM user WHERE username='".$user."' AND password='".$encrypt_password."'");
-	$numrows=mysql_num_rows($query);
+	$query=mysqli_query($con, "SELECT * FROM user WHERE username='".$user."' AND password='".$encrypt_password."'");
+	$numrows=mysqli_num_rows($query);
 	if($numrows!=0)
 	{
-	while($row=mysql_fetch_assoc($query))
+	while($row=mysqli_fetch_assoc($query))
 	{
 	$dbusername=$row['username'];
 	$dbpassword=$row['password'];

@@ -33,14 +33,15 @@ header {
 if(isset($_POST["submit"])){
 
 if(!empty($_POST['user']) && !empty($_POST['pass'])) {
-	$user=mysql_real_escape_string($_POST['user']);
-	$pass=mysql_real_escape_string($_POST['pass']);
+	
+	$con=mysqli_connect('localhost','root','') or die(mysqli_error());
+	mysqli_select_db($con,'pwdinfo') or die("cannot select DB");
+	
+	$user=mysqli_real_escape_string($con, $_POST['user']);
+	$pass=mysqli_real_escape_string($con, $_POST['pass']);
 
-	$con=mysql_connect('localhost','root','summerof69') or die(mysql_error());
-	mysql_select_db('pwdinfo') or die("cannot select DB");
-
-	$query=mysql_query("SELECT * FROM user WHERE username='".$user."'");
-	$numrows=mysql_num_rows($query);
+	$query=mysqli_query($con, "SELECT * FROM user WHERE username='".$user."'");
+	$numrows=mysqli_num_rows($query);
 	if($numrows==0)
 	{
 	//md5() calculates the md5 hash of a string
@@ -48,7 +49,7 @@ if(!empty($_POST['user']) && !empty($_POST['pass'])) {
 	
 	$sql="INSERT INTO user(username,password) VALUES('$user','$encrypt_password')";
 
-	$result=mysql_query($sql);
+	$result=mysqli_query($con, $sql);
 
 
 	if($result){
